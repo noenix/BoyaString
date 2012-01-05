@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="BSUsecase">
+  <useCaseModelRootMoniker Id="fbc61bd2-ffdc-4b74-addf-0cce8c42f6b1" />
+  <nestedChildShapes>
+    <actorShape Id="9b7e82ff-396b-4b4d-9503-d8f070c62826" absoluteBounds="3, 1.625, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="7fdc1504-2998-45c0-bf32-efed3559525f" LastKnownName="Player" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="b488cc84-d2c3-4b5b-8964-93964e5c393f" absoluteBounds="4, 0.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="fec97abc-1588-4fed-9b04-2361e981ea22" LastKnownName="演奏古琴" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(3.5 : 1.7); (4.20938090314045 : 1.20343336780168)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="1d1e4568-6323-4d96-8db0-16ad22770028" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="9b7e82ff-396b-4b4d-9503-d8f070c62826" />
+        <useCaseShapeMoniker Id="b488cc84-d2c3-4b5b-8964-93964e5c393f" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="681431b6-5762-4c0e-b519-b4fddead5344" absoluteBounds="4.125, 1.625, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="37e44834-c80c-4671-8aba-b0e07d955f1a" LastKnownName="演奏编钟" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(3.5 : 1.875); (4.125 : 1.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="d7524b54-d5bf-46bd-8bc7-80297bc408e7" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="9b7e82ff-396b-4b4d-9503-d8f070c62826" />
+        <useCaseShapeMoniker Id="681431b6-5762-4c0e-b519-b4fddead5344" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="da98fc5a-6b5a-4da9-894d-b6c52f67c355" absoluteBounds="6, 0.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="e985c3e6-6d9e-495c-9541-8c4406f706a5" LastKnownName="学习古琴" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <extendConnector edgePoints="[(6 : 1); (5 : 1)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+      <extendMoniker Id="84515572-17c4-46fc-b249-66fc67438ac9" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="da98fc5a-6b5a-4da9-894d-b6c52f67c355" />
+        <useCaseShapeMoniker Id="b488cc84-d2c3-4b5b-8964-93964e5c393f" />
+      </nodes>
+    </extendConnector>
+    <useCaseShape Id="2b5bba02-07c2-498d-afac-37b77ef8c807" absoluteBounds="6.125, 1.625, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="e695f7ef-ad33-4a5d-a8b2-b2c86d1c8f20" LastKnownName="学习编钟" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <extendConnector edgePoints="[(6.125 : 1.875); (5.125 : 1.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«extend»">
+      <extendMoniker Id="900d53b9-6e5f-4291-a8c9-5892a42a13ef" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="2b5bba02-07c2-498d-afac-37b77ef8c807" />
+        <useCaseShapeMoniker Id="681431b6-5762-4c0e-b519-b4fddead5344" />
+      </nodes>
+    </extendConnector>
+    <useCaseShape Id="0e2ce72b-8d22-4535-96cb-43e631e6c2bc" absoluteBounds="2.5, 3, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="3ddd665a-3493-482c-8eb2-6d385356cca1" LastKnownName="欣赏在线音乐会" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseShape Id="474527fc-0cab-426c-8dd0-e3a29ce64e79" absoluteBounds="1.375, 2, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="388510e6-d204-4320-a12c-8c5391e883aa" LastKnownName="观看音乐会" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(3 : 1.94318181818182); (2.31394778645719 : 2.13028696732986)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="a3d5125c-3b37-4f47-bd79-be5e662359dd" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="9b7e82ff-396b-4b4d-9503-d8f070c62826" />
+        <useCaseShapeMoniker Id="474527fc-0cab-426c-8dd0-e3a29ce64e79" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <includeConnector edgePoints="[(2.12013061981628 : 2.46789388428114); (2.75486938018372 : 3.03210611571886)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+      <includeMoniker Id="af4d4084-ee2f-447f-8c87-2cfb66cb0edb" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="474527fc-0cab-426c-8dd0-e3a29ce64e79" />
+        <useCaseShapeMoniker Id="0e2ce72b-8d22-4535-96cb-43e631e6c2bc" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="9a5cc958-bc86-4450-81ce-fdd82a04a291" absoluteBounds="1.25, 0.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="0e431bca-ad5f-4365-a325-2833848756a3" LastKnownName="上传录像" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(3 : 1.72916666666667); (2.07539568672798 : 1.18981415059132)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="bc1b874c-c400-459b-b15e-b189a4fb77eb" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="9b7e82ff-396b-4b4d-9503-d8f070c62826" />
+        <useCaseShapeMoniker Id="9a5cc958-bc86-4450-81ce-fdd82a04a291" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="9177fe9f-55cf-4184-a8c3-efc489e04868" absoluteBounds="1, 3, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="13490f0d-648a-47f6-ba86-30073afbea3f" LastKnownName="播放保存的音乐会" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(1.78285573247491 : 2.49571804673358); (1.59214426752509 : 3.00428195326642)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«include»">
+      <includeMoniker Id="d99ee5b0-cdaa-4157-aac3-1b3342520a01" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="474527fc-0cab-426c-8dd0-e3a29ce64e79" />
+        <useCaseShapeMoniker Id="9177fe9f-55cf-4184-a8c3-efc489e04868" />
+      </nodes>
+    </includeConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

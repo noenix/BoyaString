@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="66e778d2-7603-49a7-a5be-1e102cdc2a76"
+  name="ModelingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="428a26d5-22a2-4f5f-8792-e7e449c37c6f"
+        name="Player"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="5de2fb17-dcdb-40db-aa0f-5208f03fcc90"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="演奏古琴"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b626ac8e-0a8c-4fdf-8881-b20c9f7fa905"
+              LastKnownName="演奏古琴"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6c81c81f-c74d-4508-8dbf-4a81d636ee84"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0bf57324-f8ed-4744-9d08-6ef741da0768"
+                  name="演奏古琴"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="09547d6e-9144-44c9-8a2f-c4a68a406a8a"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="演奏编钟"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7eb68405-2b32-43c3-92ca-d4e3c7f1466a"
+              LastKnownName="演奏编钟"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9bdcb632-e88e-44b4-a856-f25960636f7d"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2e48906d-320b-48ed-ad9b-312bfdc078ba"
+                  name="演奏编钟"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5b1fdc9a-5b0e-4d86-8ffc-2240340f4050"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="观看录像"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="8d3adfce-9819-467b-92a2-1a6e7b6785a6"
+              LastKnownName="观看音乐会"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="20b399b3-10f0-49f1-a297-aa24cd82787c"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="28a17dd4-1eb9-4cdf-ab08-10443afe14d1"
+                  name="观看录像"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0b4a2eba-834e-4300-abc1-de2ce1cb5fd0"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="上传录像"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="59f52b85-502d-45ca-b68c-18a6fc5f5d66"
+              LastKnownName="上传录像"
+              LastKnownLocation="ModelingProject.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="53cd2f69-8313-4361-9b34-b146e83f0ffa"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="477e51e0-46f6-4afa-aae0-cb223a02a38e"
+                  name="上传录像"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b626ac8e-0a8c-4fdf-8881-b20c9f7fa905"
+        name="演奏古琴"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7eb68405-2b32-43c3-92ca-d4e3c7f1466a"
+        name="演奏编钟"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="75d703db-fa24-4ba4-8346-dca19bf09c9d"
+        name="学习古琴"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="53be626c-d7b3-4a6f-9004-03b1b3d21dcd">
+            <useCaseMoniker
+              Id="b626ac8e-0a8c-4fdf-8881-b20c9f7fa905"
+              LastKnownName="演奏古琴"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="812cc5de-8fc4-4713-a367-0438ccc46d85"
+        name="学习编钟"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="448ae78a-437f-47e4-b2da-f7d9c7f9e00d">
+            <useCaseMoniker
+              Id="7eb68405-2b32-43c3-92ca-d4e3c7f1466a"
+              LastKnownName="演奏编钟"
+              LastKnownLocation="ModelingProject.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f9246b99-7087-4dea-b2b1-0a34e09bddbd"
+        name="欣赏在线音乐会"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8d3adfce-9819-467b-92a2-1a6e7b6785a6"
+        name="观看音乐会"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="caee6635-d0ed-4fda-8ea9-6d1e07653c82">
+            <useCaseMoniker
+              Id="0ace89b6-0275-43ae-84d9-33d115b38e04"
+              LastKnownName="播放保存的音乐会"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+          <include
+            Id="92ec3ae4-8420-4dbb-9050-1fedaf164352">
+            <useCaseMoniker
+              Id="f9246b99-7087-4dea-b2b1-0a34e09bddbd"
+              LastKnownName="欣赏在线音乐会"
+              LastKnownLocation="ModelingProject.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="59f52b85-502d-45ca-b68c-18a6fc5f5d66"
+        name="上传录像"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0ace89b6-0275-43ae-84d9-33d115b38e04"
+        name="播放保存的音乐会"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
