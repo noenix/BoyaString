@@ -4,26 +4,25 @@
  */
 
 #include <iostream>
-#include "scene\AbstractScene.hpp"
-#include "util\IrrlichtSystem.hpp"
+#include "config.h"
+#include "scene/AbstractScene.hpp"
+#include "scene/MenuScene.hpp"
+#include "util/IrrlichtSystem.hpp"
 
 using std::cout;
 
 #ifndef BOOTSTRAP_H_
 #define BOOTSTRAP_H_
 
-enum boya_scene {
-	SCN_MENU,
-	//TODO adds it later
-	//SCN_INSTRUMENT,
-	//SCN_THEATRE,
-	SCN_COUNT
-};
 
 class Bootstrap {
 public:
 	Bootstrap() {
 		device = IrrlichtSystem::getInstance()->getDevice();
+		/**
+		 * a ugly way to initialize the scene.
+		 */
+		scenes[SCN_MENU] = new MenuScene(); 
 	}
 
 	/**
@@ -31,15 +30,15 @@ public:
 	 */
 	void go() {
 		cout << "hello world.\n";
-		while (device->run()) {
-			device->getVideoDriver()->beginScene(true, true, video::SColor(255,0,0,0));
-			device->getSceneManager()->drawAll();
-            device->getVideoDriver()->endScene();
+		currentScene = *scenes;
+		if (SCN_COUNT != 0) {
+			for (int nextScene = 0; (nextScene = currentScene->display()) != SCN_COUNT;
+				currentScene->clean(),currentScene = scenes[nextScene]);
+			device->drop();
 		}
-		device->drop();
 	}
 private:
-	AbstractScene *scenes[SCN_COUNT];
+	AbstractScene *scenes[SCN_COUNT], *currentScene;
 	IrrlichtDevice *device;
 };
 
