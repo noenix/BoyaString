@@ -14,8 +14,8 @@ using namespace video;
 using namespace io;
 using namespace gui;
 
-#define DEFAULT_SCREEN_WIDTH 640
-#define DEFAULT_SCREEN_HEIGHT 480
+#define DEFAULT_SCREEN_WIDTH 960
+#define DEFAULT_SCREEN_HEIGHT 540
 
 /**
  * The system is implemented in singleton pattern.
@@ -45,7 +45,10 @@ private:
 	IrrlichtSystem() {
 		device = createDevice(video::EDT_DIRECT3D9, 
 			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT));
+		device->setWindowCaption(L"≤Æ—¿÷Æœ“");
+		
 	}
+
 	~IrrlichtSystem() {}
 
 	IrrlichtDevice *device; /**< Irrlicht device */

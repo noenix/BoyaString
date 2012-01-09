@@ -15,5 +15,6 @@ enum boya_scene {
 };
 
 #define ever (;;)
+#define PI 3.1415926535
 
 #endif
