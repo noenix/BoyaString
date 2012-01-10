@@ -23,6 +23,13 @@ public:
 	}
 
 	/**
+	 * Gets irrlicht devices.
+	 * @return the device instance.
+	 */
+	//virtual IrrlichtDevice *getDevice() const 
+	//{ return device; }
+
+	/**
 	 * display the scene, called by Bootstrap class.
 	 * @return the next scene index for switching,
 	 *         SCENE_COUNT if the programs ends

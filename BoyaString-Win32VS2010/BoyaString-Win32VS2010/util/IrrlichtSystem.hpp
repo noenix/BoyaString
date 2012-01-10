@@ -6,6 +6,7 @@
 #define IRRLICHTSYSTEM_H_
 
 #include <irrlicht.h>
+//#include <controller/IControllerFactory.h>
 
 using namespace irr;
 using namespace core;
@@ -37,21 +38,34 @@ public:
 	 * Gets the irrlicht device.
 	 * @return the irrlicht device instance.
 	 */
-	IrrlichtDevice* getDevice() {
+	IrrlichtDevice* getDevice() const {
 		return device;
 	}
 
+	/**
+	 * Gets the controller factory instance.
+	 * Currently, different controller kit is determined by pre-defined marco for
+	 * easily debugging.
+	 * @return the controller factory instance
+	 */
+	//IControllerFactory* getControllerFactory() const {
+	//	return cf;
+	//}
 private:
 	IrrlichtSystem() {
 		device = createDevice(video::EDT_DIRECT3D9, 
 			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT));
 		device->setWindowCaption(L"≤Æ—¿÷Æœ“");
-		
+#ifdef USE_KINECT
+#else 
+		//cf = new MouseControllerFactory();
+#endif
 	}
 
 	~IrrlichtSystem() {}
 
 	IrrlichtDevice *device; /**< Irrlicht device */
+	//IControllerFactory *cf;
 	static IrrlichtSystem *instance;
 };
 

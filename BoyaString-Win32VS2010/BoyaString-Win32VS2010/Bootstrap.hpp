@@ -5,15 +5,17 @@
 
 #include <iostream>
 #include "config.h"
-#include "scene/AbstractScene.hpp"
-#include "scene/MenuScene.hpp"
-#include "util/IrrlichtSystem.hpp"
+
+
 
 using std::cout;
 
 #ifndef BOOTSTRAP_H_
 #define BOOTSTRAP_H_
 
+
+#include <scene/MenuScene.hpp>
+//#include <util/IrrlichtSystem.hpp>
 
 class Bootstrap {
 public:

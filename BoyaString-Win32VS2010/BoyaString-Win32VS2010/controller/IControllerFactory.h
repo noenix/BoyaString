@@ -6,19 +6,19 @@
 #ifndef ICONTROLLERFACTORY_H_
 #define ICONTROLLERFACTORY_H_
 
-#include <scene/MenuScene.hpp>
-#include "AMenuController.hpp"
+#include <controller/AMenuController.hpp>
 
 class IControllerFactory {
 public:
 	virtual AMenuController* getMenuController(MenuScene *scene) = 0;
 };
 
-class MouseControllerFactory : IControllerFactor {
+class MouseControllerFactory : IControllerFactory {
 public:
 	 AMenuController* getMenuController(MenuScene *scene) {
-
+		 return new MouseMenuController(scene);
 	 }
 };
+
 
 #endif
