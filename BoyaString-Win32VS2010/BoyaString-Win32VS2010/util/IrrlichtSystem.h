@@ -6,6 +6,7 @@
 #define IRRLICHTSYSTEM_H_
 
 #include <irrlicht.h>
+#include <controller/IControllerFactory.h>
 
 using namespace irr;
 using namespace core;
@@ -26,18 +27,13 @@ public:
 	 * Gets the only instance of irrlicht system.
 	 * @return the only instance of irrlicht system.
 	 */
-	static IrrlichtSystem* getInstance() {
-		if (instance == 0) {
-			instance = new IrrlichtSystem;
-		}
-		return instance;
-	}
+	static IrrlichtSystem* getInstance();
 
 	/**
 	 * Gets the irrlicht device.
 	 * @return the irrlicht device instance.
 	 */
-	IrrlichtDevice* getDevice() const {
+	inline IrrlichtDevice* getDevice() const {
 		return device;
 	}
 
@@ -51,23 +47,14 @@ public:
 	//	return cf;
 	//}
 private:
-	IrrlichtSystem() {
-		device = createDevice(video::EDT_DIRECT3D9, 
-			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT));
-		device->setWindowCaption(L"≤Æ—¿÷Æœ“");
-#ifdef USE_KINECT
-#else 
-		//cf = new MouseControllerFactory();
-#endif
-	}
+	IrrlichtSystem();
 
-	~IrrlichtSystem() {}
+	~IrrlichtSystem();
 
 	IrrlichtDevice *device; /**< Irrlicht device */
 	//IControllerFactory *cf;
 	static IrrlichtSystem *instance;
 };
 
-IrrlichtSystem *IrrlichtSystem::instance = 0;
 
 #endif

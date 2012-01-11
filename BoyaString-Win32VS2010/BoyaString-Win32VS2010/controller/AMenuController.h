@@ -2,28 +2,36 @@
  * The abstracy controller for our program.
  * @author Ye Jiabin
  */
-#include <scene/MenuScene.hpp>
 
 #ifndef AMENUCONTROLLER_H_
 #define AMENUCONTROLLER_H_
+
+#include <irrlicht.h>
+//#include <scene/AbstractScene.h>
+//#include <scene/MenuScene.h>
+using namespace irr;
+using namespace core;
+using namespace scene;
+using namespace video;
+using namespace io;
+using namespace gui;
+
+class AbstractScene;
+class MenuScene;
 
 /**
  * Abstract menu controller.
  */
 class AMenuController : public IEventReceiver{
 public:
-	AMenuController(MenuScene *scene) {
-		this->scene = scene;
-	}
+	AMenuController(MenuScene *scene);
 
 	/**
 	 * Makes this controller as event listener.
 	 */
-	virtual void dominate() {
-		
-		//this->scene->getDevice();
-		//->setEventReceiver(this);
-	}
+	//inline virtual void dominate() {	
+	//	this->scene->getDevice()->setEventReceiver(this);
+	//}
 protected:
 	MenuScene *scene;
 };
@@ -33,30 +41,14 @@ protected:
  */
 class MouseMenuController : public AMenuController {
 public:
-	MouseMenuController(MenuScene *scene):AMenuController(scene) {
-	}
+	MouseMenuController(MenuScene *scene);
 
 	/**
 	 * Implements the base class.
 	 * @param event event object passed into method
 	 * @return false why 'false' is returned.
 	 */
-	virtual bool OnEvent(const SEvent& event) {
-		if (event.EventType == irr::EET_KEY_INPUT_EVENT) {
-			switch(event.KeyInput.Key) {
-			case KEY_LEFT:
-				scene->switchTo(false);
-				break;
-			case KEY_RIGHT:
-				scene->switchTo(true);
-				break;
-			default:
-				break;
-			}
-		}
-	}
+	virtual bool OnEvent(const SEvent& event);
 };
-
-
 
 #endif

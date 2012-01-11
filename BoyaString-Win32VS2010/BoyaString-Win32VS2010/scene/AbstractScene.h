@@ -7,28 +7,30 @@
 #define ABSTRACTSCENE_H_
 
 #include <config.h>
-#include <util/IrrlichtSystem.hpp>
 
+#include <irrlicht.h>
+//#include <controller/IControllerFactory.h>
+
+using namespace irr;
+using namespace core;
+using namespace scene;
+using namespace video;
+using namespace io;
+using namespace gui;
 
 class AbstractScene {
 public:
 	/**
 	 * Default constructor.
 	 */
-	AbstractScene() {
-		device = IrrlichtSystem::getInstance()->getDevice();
-		driver = device->getVideoDriver();
-		smgr = device->getSceneManager();
-
-		sSize = driver->getScreenSize();
-	}
+	AbstractScene();
 
 	/**
 	 * Gets irrlicht devices.
 	 * @return the device instance.
 	 */
-	//virtual IrrlichtDevice *getDevice() const 
-	//{ return device; }
+	inline virtual IrrlichtDevice* getDevice() const 
+	{ return device; }
 
 	/**
 	 * display the scene, called by Bootstrap class.
@@ -50,5 +52,7 @@ protected:
 };
 
 //#include <controller/IControllerFactory.hpp>
+
+//#include <scene/MenuScene.h>
 
 #endif

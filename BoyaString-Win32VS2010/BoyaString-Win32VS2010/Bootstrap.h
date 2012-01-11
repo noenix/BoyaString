@@ -3,43 +3,29 @@
  * @author Ye Jiabin
  */
 
-#include <iostream>
-#include "config.h"
 
-
-
-using std::cout;
 
 #ifndef BOOTSTRAP_H_
 #define BOOTSTRAP_H_
 
+#include <iostream>
+#include "config.h"
 
-//#include <scene/MenuScene.hpp>
-//#include <util/IrrlichtSystem.hpp>
-#include <controller/IControllerFactory.hpp>
+using std::cout;
+
+#include <scene/AbstractScene.h>
+#include <scene/MenuScene.h>
+#include <util/IrrlichtSystem.h>
+//#include <controller/IControllerFactory.h>
 
 class Bootstrap {
 public:
-	Bootstrap() {
-		device = IrrlichtSystem::getInstance()->getDevice();
-		/**
-		 * a ugly way to initialize the scene.
-		 */
-		scenes[SCN_MENU] = new MenuScene(); 
-	}
+	Bootstrap() ;
 
 	/**
 	 * the method starting the program.
 	 */
-	void go() {
-		cout << "hello world.\n";
-		currentScene = *scenes;
-		if (SCN_COUNT != 0) {
-			for (int nextScene = 0; (nextScene = currentScene->display()) != SCN_COUNT;
-				currentScene->clean(),currentScene = scenes[nextScene]);
-			device->drop();
-		}
-	}
+	void go();
 private:
 	AbstractScene *scenes[SCN_COUNT], *currentScene;
 	IrrlichtDevice *device;
