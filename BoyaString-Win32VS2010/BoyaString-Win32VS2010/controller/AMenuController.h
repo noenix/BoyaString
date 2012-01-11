@@ -2,12 +2,10 @@
  * The abstracy controller for our program.
  * @author Ye Jiabin
  */
+#include <scene/MenuScene.hpp>
 
 #ifndef AMENUCONTROLLER_H_
 #define AMENUCONTROLLER_H_
-
-#include <scene/AbstractScene.hpp>
-#include <scene/MenuScene.hpp>
 
 /**
  * Abstract menu controller.
@@ -58,5 +56,7 @@ public:
 		}
 	}
 };
+
+
 
 #endif

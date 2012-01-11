@@ -6,7 +6,6 @@
 #define IRRLICHTSYSTEM_H_
 
 #include <irrlicht.h>
-//#include <controller/IControllerFactory.h>
 
 using namespace irr;
 using namespace core;

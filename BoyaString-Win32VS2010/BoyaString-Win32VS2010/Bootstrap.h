@@ -14,8 +14,9 @@ using std::cout;
 #define BOOTSTRAP_H_
 
 
-#include <scene/MenuScene.hpp>
+//#include <scene/MenuScene.hpp>
 //#include <util/IrrlichtSystem.hpp>
+#include <controller/IControllerFactory.hpp>
 
 class Bootstrap {
 public:

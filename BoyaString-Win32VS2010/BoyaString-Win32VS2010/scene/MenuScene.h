@@ -3,16 +3,15 @@
  * @author Ye Jiabin
  */
 
-#ifndef MENUSCENE_H_
-#define MENUSCENE_H
-
-
-
 #include <config.h>
 #include <scene/AbstractScene.hpp>
 
 #include <cmath>
 #include <iostream>
+
+#ifndef MENUSCENE_H_
+#define MENUSCENE_H
+
 
 enum menuitem_type {
 	MIT_PLAY_INS,

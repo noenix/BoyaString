@@ -9,6 +9,7 @@
 #include <config.h>
 #include <util/IrrlichtSystem.hpp>
 
+
 class AbstractScene {
 public:
 	/**
@@ -47,5 +48,7 @@ protected:
 	IVideoDriver *driver;
 	core::dimension2du sSize; /**< Screen width and height */
 };
+
+//#include <controller/IControllerFactory.hpp>
 
 #endif

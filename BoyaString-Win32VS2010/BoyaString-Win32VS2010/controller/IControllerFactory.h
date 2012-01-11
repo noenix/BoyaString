@@ -3,10 +3,10 @@
  * @author Ye Jiabin
  */
 
+#include <controller/AMenuController.hpp>
+
 #ifndef ICONTROLLERFACTORY_H_
 #define ICONTROLLERFACTORY_H_
-
-#include <controller/AMenuController.hpp>
 
 class IControllerFactory {
 public:
@@ -15,7 +15,7 @@ public:
 
 class MouseControllerFactory : IControllerFactory {
 public:
-	 AMenuController* getMenuController(MenuScene *scene) {
+	 inline AMenuController* getMenuController(MenuScene *scene) {
 		 return new MouseMenuController(scene);
 	 }
 };
