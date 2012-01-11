@@ -6,7 +6,7 @@
 #define IRRLICHTSYSTEM_H_
 
 #include <irrlicht.h>
-#include <controller/IControllerFactory.h>
+
 
 using namespace irr;
 using namespace core;
@@ -17,6 +17,8 @@ using namespace gui;
 
 #define DEFAULT_SCREEN_WIDTH 960
 #define DEFAULT_SCREEN_HEIGHT 540
+
+class IControllerFactory;
 
 /**
  * The system is implemented in singleton pattern.
@@ -43,16 +45,14 @@ public:
 	 * easily debugging.
 	 * @return the controller factory instance
 	 */
-	//IControllerFactory* getControllerFactory() const {
-	//	return cf;
-	//}
+	IControllerFactory* getControllerFactory() const;
 private:
 	IrrlichtSystem();
 
 	~IrrlichtSystem();
 
 	IrrlichtDevice *device; /**< Irrlicht device */
-	//IControllerFactory *cf;
+	IControllerFactory *cf;
 	static IrrlichtSystem *instance;
 };
 

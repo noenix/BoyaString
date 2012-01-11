@@ -1,10 +1,14 @@
 #include <scene/MenuScene.h>
 #include <scene/AbstractScene.h>
+#include <util/IrrlichtSystem.h>
+#include <controller/IControllerFactory.h>
+#include <controller/AMenuController.h>
 
 MenuScene::MenuScene() : AbstractScene() {
 	aniHandler.animationState = 0;
 	aniHandler.animationStep = 0;
 	currentMenu = 0;
+	controller = 0;
 }
 
 int MenuScene::display() {
@@ -17,13 +21,23 @@ int MenuScene::display() {
 		while (device->run()) {
 			driver->beginScene(true, true, video::SColor(255,0,0,0));
 
-			_animate();
+			if (!returnState) {
+				_animate();
+			} else {
+				break;
+			}
 
 			smgr->drawAll();
 			driver->endScene();
 		}
 	}
 	return SCN_COUNT;
+}
+
+void MenuScene::enter() {
+	if (!(ANI_MASK & aniHandler.animationState)) {
+		returnState = currentMenu |  0x100;
+	}
 }
 
 void MenuScene::clean() {
@@ -40,12 +54,11 @@ void MenuScene::switchTo(bool isNext) {
 	}
 }
 
-
 void MenuScene::_animate() {
 	if (ANI_MASK & aniHandler.animationState) {
 		++aniHandler.animationStep;
 		for (int i=0, j=currentMenu; i<MIT_COUNT; ++i, ++j) {
-			float sign = ANI_SWITCH_TO_NEXT ? 1.0f : -1.0f;
+			float sign = ANI_SWITCH_TO_NEXT & aniHandler.animationState ? 1.0f : -1.0f;
 			float radius = (.5f - (sign*static_cast<float>(aniHandler.animationStep)/static_cast<float>(ANI_STEP)+i)
 				*2.0f/MIT_COUNT)*PI;;
 			menuItems[j % MIT_COUNT]->setPosition(vector3df(std::cos(radius)*menuRadius, 0,
@@ -59,6 +72,15 @@ void MenuScene::_animate() {
 }
 
 void MenuScene::_init() {
+
+	returnState = 0;
+	/* initialize the controller */
+	if (!controller) {
+		controller = IrrlichtSystem::getInstance()
+			->getControllerFactory()->getMenuController(this);
+	}
+	controller->dominate();
+
 	/* TODO temporarily adds some basic mesh */
 	u32 w = this->sSize.Width, h = this->sSize.Height ; 
 	menuRadius = 300.0;

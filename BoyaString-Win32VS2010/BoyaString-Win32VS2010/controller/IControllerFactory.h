@@ -15,7 +15,7 @@ public:
 	virtual AMenuController* getMenuController(MenuScene *scene) = 0;
 };
 
-class MouseControllerFactory : IControllerFactory {
+class MouseControllerFactory : public IControllerFactory {
 public:
 	  AMenuController* getMenuController(MenuScene *scene);
 };

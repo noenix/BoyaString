@@ -29,9 +29,8 @@ public:
 	/**
 	 * Makes this controller as event listener.
 	 */
-	//inline virtual void dominate() {	
-	//	this->scene->getDevice()->setEventReceiver(this);
-	//}
+	virtual void dominate();
+
 protected:
 	MenuScene *scene;
 };

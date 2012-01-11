@@ -13,6 +13,7 @@
 #include <iostream>
 
 class AbstractScene;
+class AMenuController;
 
 #include <scene/AbstractScene.h>
 
@@ -25,7 +26,7 @@ enum menuitem_type {
 	MIT_COUNT
 };
 
-#define ANI_STEP 100
+#define ANI_STEP 200
 #define ANI_MASK 01 /** if var & ANI_MASK current state is in mask */
 #define ANI_SWITCH_TO_NEXT 02
 
@@ -44,10 +45,15 @@ public:
 	virtual int display(); 
 
 	/**
-	 * switch to next menu.
+	 * Switches to next menu.
 	 * @param isNext determines whether or not switch to next menu item
 	 */
 	void switchTo(bool isNext) ;
+
+	/**
+	 * Enters to a particular menu.
+	 */
+	void enter();
 
 	void clean();
 
@@ -58,6 +64,9 @@ private:
 	float menuRadius;
 
 	int currentMenu; /**< Currently selective menu. */
+	int returnState;
+
+	AMenuController *controller;
 	
 	struct animationHandler {
 		u32 animationState; /**< The animation state of the scene @see ANI_MASK */

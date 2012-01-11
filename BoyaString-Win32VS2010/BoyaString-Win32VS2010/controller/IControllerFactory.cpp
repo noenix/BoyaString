@@ -2,5 +2,5 @@
 
 
 AMenuController* MouseControllerFactory::getMenuController(MenuScene *scene) {
-		 return new MouseMenuController(0);
+		 return new MouseMenuController(scene);
 }
