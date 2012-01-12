@@ -8,8 +8,9 @@
 
 enum boya_scene {
 	SCN_MENU,
+	SCN_INSTRUMENT,
 	//TODO adds it later
-	//SCN_INSTRUMENT,
+	
 	//SCN_THEATRE,
 	SCN_COUNT
 };

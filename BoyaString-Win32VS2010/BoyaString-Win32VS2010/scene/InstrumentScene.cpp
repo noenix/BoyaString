@@ -1,6 +1,8 @@
 #include <scene/InstrumentScene.h>
 
 #include <iostream>
+#include <scene/AbstractInstrument.h>
+#include <scene/InsBianZhong.h>
 
 InstrumentScene::InstrumentScene():AbstractScene() {
 }

@@ -14,7 +14,7 @@
 using std::cout;
 
 #include <scene/AbstractScene.h>
-#include <scene/MenuScene.h>
+
 #include <util/IrrlichtSystem.h>
 //#include <controller/IControllerFactory.h>
 

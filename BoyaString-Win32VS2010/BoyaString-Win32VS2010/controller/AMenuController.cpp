@@ -5,6 +5,8 @@
 #include <scene/AbstractScene.h>
 #include <scene/MenuScene.h>
 
+#include <util/KinectDevice.h>
+
 AMenuController::AMenuController(MenuScene *scene):IEventReceiver() {
 	this->scene = scene;
 }
@@ -34,10 +36,23 @@ bool MouseMenuController::OnEvent(const SEvent& event) {
 #ifdef _DEBUG
 			std::cout << "ENTER.\n";
 #endif
+			scene->enter();
 			break;
 		default:
 			break;
 		}
 	}
 	return false;
+}
+
+KinectMenuController::KinectMenuController(MenuScene *scene):AMenuController(scene){}
+
+
+bool KinectMenuController::OnEvent(const SEvent& event) {
+	return false;
+}
+
+void KinectMenuController::dominate() {
+	KinectDevice::getInstance()->start();
+	this->scene->getDevice()->setEventReceiver(this);
 }

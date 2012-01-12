@@ -9,6 +9,12 @@ public:
 	AbstractInstrument(InstrumentScene *s);
 
 	/**
+	 * Intializes the musical instrument.
+	 * Loads mesh objects.
+	 */
+	virtual void init() = 0;
+
+	/**
 	 * renders the scene calls by Instrument scene.
 	 */
 	virtual void render() = 0;

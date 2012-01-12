@@ -21,6 +21,9 @@ public:
 };
 
 
-
+class KinectControllerFactory : public IControllerFactory {
+public:
+	  AMenuController* getMenuController(MenuScene *scene);
+};
 
 #endif

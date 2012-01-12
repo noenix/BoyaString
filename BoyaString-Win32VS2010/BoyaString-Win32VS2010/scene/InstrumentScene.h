@@ -7,6 +7,7 @@
 
 #include <scene/AbstractScene.h>
 
+class AbstractInstrument;
 class InsBianZhong;
 
 class InstrumentScene : public AbstractScene {
@@ -33,6 +34,8 @@ public:
 	
 private:
 	ICameraSceneNode *camera; /**< The default camera node */
+
+	AbstractInstrument *instrument;
 
 	/**
 	 * Intialize the scene.

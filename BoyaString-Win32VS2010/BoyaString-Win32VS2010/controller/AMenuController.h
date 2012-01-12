@@ -50,4 +50,18 @@ public:
 	virtual bool OnEvent(const SEvent& event);
 };
 
+class KinectMenuController : public AMenuController {
+public:
+	KinectMenuController(MenuScene *scene);
+
+	/**
+	 * Implements the base class.
+	 * @param event event object passed into method
+	 * @return false why 'false' is returned.
+	 */
+	virtual bool OnEvent(const SEvent& event);
+
+	void dominate();
+};
+
 #endif

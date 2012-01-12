@@ -6,6 +6,12 @@ InsBianZhong::InsBianZhong(InstrumentScene *s) :
 {
 }
 
+void InsBianZhong::init() {
+	ISceneManager* smgr = scene->smgr;
+
+	
+}
+
 void InsBianZhong::render()
 {
 }

@@ -1,11 +1,15 @@
 ﻿#include "Bootstrap.h"
 
+#include <scene/MenuScene.h>
+#include <scene/InstrumentScene.h>
+
 Bootstrap::Bootstrap(){
 	device = IrrlichtSystem::getInstance()->getDevice();
 	/**
 	 * a ugly way to initialize the scene.
 	 */
 	scenes[SCN_MENU] = new MenuScene(); 
+	scenes[SCN_INSTRUMENT] = new InstrumentScene(); 
 }
 
 void Bootstrap::go()  {

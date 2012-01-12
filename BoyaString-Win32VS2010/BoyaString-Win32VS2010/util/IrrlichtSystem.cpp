@@ -21,6 +21,7 @@ IrrlichtSystem::IrrlichtSystem() {
 	
 		device->setWindowCaption(L"≤Æ—¿÷Æœ“");
 #ifdef USE_KINECT
+		cf = new KinectControllerFactory();
 #else 
 		cf = new MouseControllerFactory();
 #endif
