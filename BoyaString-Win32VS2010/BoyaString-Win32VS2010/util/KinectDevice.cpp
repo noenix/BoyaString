@@ -1,6 +1,7 @@
 #include <util/KinectDevice.h>
 
 #include <iostream>
+#include <MSR_NuiApi.h>
 
 KinectDevice *KinectDevice::instance = 0;
 HANDLE KinectDevice::threadHandler = 0;
@@ -26,10 +27,16 @@ KinectDevice::~KinectDevice(void)
 
 DWORD WINAPI KinectDevice::_startKinect(LPVOID param)
 {
+	/**
+	 * Assets that kinect is able to open after successfully
+	 * tested some tiny seconds ago.
+	 */
+	NuiInitialize(NUI_INITIALIZE_FLAG_USES_SKELETON );
 	while(1) {
 		Sleep(500);
 		std::cout << "aaaaa.\n";
 	}
+	NuiShutdown();
 	return 0;
 }
 
@@ -38,6 +45,12 @@ bool KinectDevice::start()
 	if (isRun) {
 		return false;
 	} else {
+		/* test device open */
+		if (NuiInitialize(NUI_INITIALIZE_FLAG_USES_SKELETON ) != S_OK) {
+			return false;
+		}
+		NuiShutdown();
+
 		threadHandler = CreateThread( 
             NULL,                   // default security attributes
             0,                      // use default stack size  
