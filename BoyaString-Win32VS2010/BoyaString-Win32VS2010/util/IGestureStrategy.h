@@ -2,6 +2,7 @@
 #ifndef IGESTURESTRATEGY_H_
 #define IGESTURESTRATEGY_H_
 
+#include <MSR_NuiApi.h>
 
 class IGestureStrategy
 {
