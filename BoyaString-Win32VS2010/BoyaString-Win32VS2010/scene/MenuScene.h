@@ -58,9 +58,10 @@ public:
 	void clean();
 
 private:
-	IMeshSceneNode *menuItems[MIT_COUNT];
+	ISceneNode *menuItems[MIT_COUNT];
+	ISceneNode *backWall, *upWall, *downWall, *leftWall, *rightWall;
 	ICameraSceneNode *camera;
-	ILightSceneNode *gLight, *selectLight;
+	ILightSceneNode *gLight, *upLight, *downLight;
 	float menuRadius;
 
 	int currentMenu; /**< Currently selective menu. */

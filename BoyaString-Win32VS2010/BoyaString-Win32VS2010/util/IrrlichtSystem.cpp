@@ -17,7 +17,8 @@ IControllerFactory* IrrlichtSystem::getControllerFactory() const {
 
 IrrlichtSystem::IrrlichtSystem() {
 	device = createDevice(video::EDT_DIRECT3D9, 
-			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT));
+			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT), 32);
+	
 		device->setWindowCaption(L"≤Æ—¿÷Æœ“");
 #ifdef USE_KINECT
 #else 
