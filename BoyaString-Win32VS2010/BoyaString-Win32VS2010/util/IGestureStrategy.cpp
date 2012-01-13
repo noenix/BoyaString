@@ -1,4 +1,4 @@
-#include <util/IGestureStrategy>
+#include <util/IGestureStrategy.h>
 
 
 IGestureStrategy::IGestureStrategy(void)

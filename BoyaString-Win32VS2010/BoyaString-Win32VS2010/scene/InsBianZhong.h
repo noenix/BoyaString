@@ -13,6 +13,12 @@ using namespace io;
 using namespace gui;
 
 enum bianZhongType {
+	BZ_C4,
+	BZ_D4,
+	BZ_E4,
+	BZ_G4,
+	BZ_A4,
+	BZ_B4,
 	BZ_COUNT
 };
 
@@ -38,7 +44,8 @@ public:
 
 	virtual ~InsBianZhong(void);
 private:
-	ISceneNode *bianZhong;
+	IMeshSceneNode *bianZhong[BZ_COUNT];
+	ILightSceneNode *light;
 };
 
 #endif

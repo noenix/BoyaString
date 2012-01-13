@@ -2,6 +2,7 @@
 #ifndef IGESTURESTRATEGY_H_
 #define IGESTURESTRATEGY_H_
 
+#include <windows.h>
 #include <MSR_NuiApi.h>
 
 class IGestureStrategy
@@ -16,7 +17,7 @@ public:
 	 * @param skeleton the marco value is defined in MSR_NuiSkeletion.h
 	 * @return a certain gesture type defined enumaration type 
 	 */
-	virtual int setPosition(const Vector4& position, int skeleton) =0;
+	virtual int setPosition(const Vector4& position, int skeleton) { return 0; };
 
 	virtual ~IGestureStrategy(void);
 };

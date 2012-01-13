@@ -20,7 +20,7 @@ IrrlichtSystem::IrrlichtSystem() {
 			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT), 32);
 	
 		device->setWindowCaption(L"≤Æ—¿÷Æœ“");
-#ifdef USE_KINECT
+#ifndef USE_KINECT
 		cf = new KinectControllerFactory();
 #else 
 		cf = new MouseControllerFactory();
