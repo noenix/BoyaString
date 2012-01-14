@@ -8,6 +8,7 @@
 #include <scene/AbstractScene.h>
 
 class AbstractInstrument;
+class AInstrumentController;
 class InsBianZhong;
 
 class InstrumentScene : public AbstractScene {
@@ -23,6 +24,8 @@ public:
 	 */
 	virtual int display(); 
 
+	inline AbstractInstrument *getInstrument() const
+	{ return instrument; }
 	
 	/**
 	 * The clean method inherited from the base class.
@@ -36,6 +39,8 @@ private:
 	ICameraSceneNode *camera; /**< The default camera node */
 
 	AbstractInstrument *instrument;
+
+	AInstrumentController *controller;
 
 	/**
 	 * Intialize the scene.

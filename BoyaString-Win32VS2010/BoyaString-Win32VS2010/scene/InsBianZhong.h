@@ -37,6 +37,11 @@ public:
 	virtual void render();
 
 	/**
+	 * Sets hammer position.
+	 */
+	void setHammerPosition(const vector3df& position);
+
+	/**
 	 * Implements base class method.
 	 * @see AbstractInstrument#play
 	 */
@@ -44,8 +49,16 @@ public:
 
 	virtual ~InsBianZhong(void);
 private:
-	IMeshSceneNode *bianZhong[BZ_COUNT];
+	IMeshSceneNode *bianZhong[BZ_COUNT]; /**< A set of bianzhongs. */
+	IMeshSceneNode *hammer; /**< The hammer to beat bianzhong. */
 	ILightSceneNode *light;
+
+	/**
+	 * Gets the specific x-coordinate of a bianzhong.
+	 * @param idx the index of a bianzhong.
+	 * @return the x-corrdinate.
+	 */
+	float _getPositionX(int idx);
 };
 
 #endif

@@ -22,6 +22,12 @@ class AInstrumentController : public IEventReceiver
 {
 public:
 	AInstrumentController(InstrumentScene *scene);
+
+	/**
+	 * Makes this controller as event listener.
+	 */
+	virtual void dominate();
+
 	virtual ~AInstrumentController(void);
 protected:
 	InstrumentScene *scene;
@@ -42,6 +48,7 @@ public:
 
 class MouseInstrumentController : public AInstrumentController
 {
+public:
 	MouseInstrumentController(InstrumentScene *scene);
 
 	/**
@@ -50,6 +57,8 @@ class MouseInstrumentController : public AInstrumentController
 	 * @return false why 'false' is returned.
 	 */
 	virtual bool OnEvent(const SEvent& event);
+private:
+	IVideoDriver *driver;
 };
 
 #endif

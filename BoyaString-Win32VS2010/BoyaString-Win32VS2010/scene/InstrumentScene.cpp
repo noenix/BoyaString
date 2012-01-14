@@ -4,9 +4,11 @@
 #include <util/IrrlichtSystem.h>
 #include <scene/AbstractInstrument.h>
 #include <scene/InsBianZhong.h>
+#include <controller/IControllerFactory.h>
 
 InstrumentScene::InstrumentScene():AbstractScene() {
 	instrument = 0;
+	controller = 0;
 }
 
 int InstrumentScene::display() {
@@ -29,7 +31,11 @@ void InstrumentScene::clean() {
 }
 
 void InstrumentScene::_init() {
-	
+	if (!controller) {
+		controller = IrrlichtSystem::getInstance()
+			->getControllerFactory()->getInstrumentController(this);
+	}
+	controller->dominate();
 
 	instrument = new InsBianZhong(this);
 	instrument->init();
