@@ -17,7 +17,10 @@ void Bootstrap::go()  {
 	currentScene = *scenes;
 	if (SCN_COUNT != 0) {
 		for (int nextScene = 0; (nextScene = currentScene->display()) != SCN_COUNT;
-			currentScene->clean(),currentScene = scenes[nextScene]);
+			currentScene->clean(),currentScene = scenes[nextScene]) {
+				IrrlichtSystem::getInstance()->showLoadingImg(true);
+				IrrlichtSystem::getInstance()->getDevice()->getGUIEnvironment()->drawAll();
+		}
 		device->drop();
 	}
 }

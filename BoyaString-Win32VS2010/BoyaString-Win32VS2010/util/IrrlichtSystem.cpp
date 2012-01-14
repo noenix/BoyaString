@@ -18,8 +18,24 @@ IControllerFactory* IrrlichtSystem::getControllerFactory() const {
 IrrlichtSystem::IrrlichtSystem() {
 	device = createDevice(video::EDT_DIRECT3D9, 
 			core::dimension2du(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT), 32);
+	device->setWindowCaption(L"²®ÑÀÖ®ÏÒ");
+
+	u32 w = device->getVideoDriver()->getScreenSize().Width,
+		h = device->getVideoDriver()->getScreenSize().Height;
+
+	bgImg = device->getGUIEnvironment()->addImage(rect<s32>(0, 0, w, h));
+	bgImg->setImage(device->getVideoDriver()->getTexture("res/pixel_white.png"));
+	bgImg->setScaleImage(true);
+
+	ITexture *loadingTexture = device->getVideoDriver()->getTexture("res/loading.png");
+	loadingImg = device->getGUIEnvironment()->addImage(
+		loadingTexture,vector2d<s32>((w - loadingTexture->getSize().Width) >> 1,
+		(h - loadingTexture->getSize().Height) >> 1));
+
 	
-		device->setWindowCaption(L"²®ÑÀÖ®ÏÒ");
+	this->showLoadingImg(false);
+
+		
 #ifndef USE_KINECT
 		cf = new KinectControllerFactory();
 #else 
@@ -28,3 +44,9 @@ IrrlichtSystem::IrrlichtSystem() {
 }
 
 IrrlichtSystem::~IrrlichtSystem() {}
+
+void IrrlichtSystem::showLoadingImg(bool isShow)
+{
+	loadingImg->setVisible(isShow);
+	bgImg->setVisible(isShow);
+}

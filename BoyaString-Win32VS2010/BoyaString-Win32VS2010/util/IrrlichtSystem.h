@@ -40,6 +40,13 @@ public:
 	}
 
 	/**
+	 * Controlls the loading image.
+	 * @param isShow true if show the loading image,
+	 *        otherwise hide
+	 */
+	void showLoadingImg(bool isShow);
+
+	/**
 	 * Gets the controller factory instance.
 	 * Currently, different controller kit is determined by pre-defined marco for
 	 * easily debugging.
@@ -51,8 +58,10 @@ private:
 
 	~IrrlichtSystem();
 
+	IGUIImage *loadingImg, *bgImg;
+
 	IrrlichtDevice *device; /**< Irrlicht device */
-	IControllerFactory *cf;
+	IControllerFactory *cf; /**< The abstract controller factory */
 	static IrrlichtSystem *instance;
 };
 

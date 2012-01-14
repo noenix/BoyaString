@@ -1,6 +1,7 @@
 #include <scene/InstrumentScene.h>
 
 #include <iostream>
+#include <util/IrrlichtSystem.h>
 #include <scene/AbstractInstrument.h>
 #include <scene/InsBianZhong.h>
 
@@ -28,6 +29,7 @@ void InstrumentScene::clean() {
 }
 
 void InstrumentScene::_init() {
+	
 
 	instrument = new InsBianZhong(this);
 	instrument->init();
@@ -37,6 +39,7 @@ void InstrumentScene::_init() {
 		-static_cast<float>(this->sSize.Height >> 1)*1.33333333f ));
 	camera->setAspectRatio(static_cast<float>(16.0/9.0));
 
+	IrrlichtSystem::getInstance()->showLoadingImg(false);
 	/* Layouts the instrument */ 
 	/*
 	ISceneNode *cube = smgr->addCubeSceneNode(75);

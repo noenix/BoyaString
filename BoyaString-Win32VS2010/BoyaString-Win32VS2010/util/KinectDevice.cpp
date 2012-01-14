@@ -1,4 +1,5 @@
 #include <util/KinectDevice.h>
+#include <util/IrrlichtSystem.h>
 
 #include <iostream>
 #include <MSR_NuiApi.h>
@@ -27,13 +28,20 @@ KinectDevice::~KinectDevice(void)
 
 DWORD WINAPI KinectDevice::_startKinect(LPVOID param)
 {
+
+	IVideoDriver *driver =
+		IrrlichtSystem::getInstance()->getDevice()->getVideoDriver();
+	
 	/**
 	 * Assets that kinect is able to open after successfully
 	 * tested some tiny seconds ago.
 	 */
 	NuiInitialize(NUI_INITIALIZE_FLAG_USES_SKELETON );
+	
 	while(1) {
 		Sleep(500);
+		
+		;
 		std::cout << "aaaaa.\n";
 	}
 	NuiShutdown();

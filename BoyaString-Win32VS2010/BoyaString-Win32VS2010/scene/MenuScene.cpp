@@ -13,6 +13,7 @@ MenuScene::MenuScene() : AbstractScene() {
 
 int MenuScene::display() {
 	_init();
+
 	/**
 		* actually, not forever and nothing will last 
 		* forever even love.
