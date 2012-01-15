@@ -1,23 +1,35 @@
 #include <scene/InsBianZhong.h>
 #include <scene/InstrumentScene.h>
 
+#include <iostream>
+#include <cmath>
+
+#define MAX_STRENGTH 20.0f
+#define BZ_PERIOD 12 /*< steps per period **/
+
 InsBianZhong::InsBianZhong(InstrumentScene *s) :
 	AbstractInstrument(s)
 {
+	for (int i=0; i<BZ_COUNT; ++i) {
+		playState[i].keyOn = playState[i].sideOn = false;
+		playState[i].remain = 0;
+	}
 }
 
 void InsBianZhong::init() {
 	ISceneManager *smgr = scene->smgr;
 	IVideoDriver *driver = scene->driver;
 	u32 w = scene->sSize.Width, h = scene->sSize.Height;
-	
+
 	IMesh *meshBZ = smgr->getMesh("res/instrument/zhong.obj");
+	float yDiff = 7.5f;
+
 	for (int i=0; i<BZ_COUNT; ++i) {
 		bianZhong[i] = smgr->addMeshSceneNode(meshBZ);
 		if (bianZhong[i] == 0) {
 			break; //TODO Throw some exception here
 		}
-		bianZhong[i]->setPosition(vector3df(_getPositionX(i), 0, 0));
+		bianZhong[i]->setPosition(vector3df(_getPositionX(i), (BZ_COUNT-1-i)*yDiff, 0));
 		bianZhong[i]->setScale(vector3df(8.0f+i, 8.0f+i, 8.0f+i));
 	}
 
@@ -34,6 +46,27 @@ void InsBianZhong::init() {
 
 void InsBianZhong::render()
 {
+	for (int i=0; i<BZ_COUNT; ++i) {
+		if (playState[i].keyOn) {
+			--playState[i].remain;
+
+			int periodRemain = playState[i].remain/BZ_PERIOD + 1;
+			int stepInPeriod = (BZ_PERIOD >> 1) - playState[i].remain % BZ_PERIOD;
+
+			float degDiff =  std::asinf(static_cast<float>(stepInPeriod /static_cast<float>(BZ_PERIOD >> 1)));
+
+			std::cout << "Rotation of " << i << " is " <<
+				2.0f * degDiff / PI * 90.0f * periodRemain/MAX_STRENGTH << '\n';
+
+			bianZhong[i]->setRotation(vector3df( 
+				2.0f * degDiff / PI * 90.0f * periodRemain/MAX_STRENGTH,
+				0, 0));
+
+			if (playState[i].remain <= 0) {
+				playState[i].keyOn = false;
+			}
+		}
+	}
 }
 
 void InsBianZhong::setHammerPosition(const vector3df& position) {
@@ -42,10 +75,23 @@ void InsBianZhong::setHammerPosition(const vector3df& position) {
 
 void InsBianZhong::play(void *note) 
 {
+	/* calculates the bianzhong index */
+	u32 w = static_cast<u32>(scene->sSize.Width*.8);
+	float tempIdx = (hammer->getPosition().X + static_cast<float>(w >> 1))/static_cast<float>(w)*BZ_COUNT;
+	if (tempIdx < 0) { /* sanity check */
+		tempIdx = 0.0f;
+	}
+	int realIdx = static_cast<int>(tempIdx);
+	if (!playState[realIdx].keyOn) {
+		/* according to the strength of hitting */
+		playState[realIdx].remain = 10*BZ_PERIOD;
+		playState[realIdx].keyOn = true;
+	}
 }
 
 float InsBianZhong::_getPositionX(int idx) {
-	u32 w = scene->sSize.Width;
+	/* margin 10% */
+	u32 w = static_cast<u32>(scene->sSize.Width*.8);
 	return -static_cast<float>(w >> 1) + static_cast<float>((.5f+idx)*w)/BZ_COUNT;
 }
 

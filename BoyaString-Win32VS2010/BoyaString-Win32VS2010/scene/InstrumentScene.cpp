@@ -19,6 +19,8 @@ int InstrumentScene::display() {
 		while (device->run()) {
 			driver->beginScene(true, true, video::SColor(255,0,0,0));
 
+			instrument->render();
+
 			smgr->drawAll();
 			driver->endScene();
 		}

@@ -37,9 +37,15 @@ public:
 	virtual void render();
 
 	/**
-	 * Sets hammer position.
+	 * Sets hammer position.(obsolute)
 	 */
 	void setHammerPosition(const vector3df& position);
+
+	/**
+	 * Gets the hammer instance.
+	 */
+	inline IMeshSceneNode *getHammer() const
+	{ return hammer; }
 
 	/**
 	 * Implements base class method.
@@ -52,6 +58,12 @@ private:
 	IMeshSceneNode *bianZhong[BZ_COUNT]; /**< A set of bianzhongs. */
 	IMeshSceneNode *hammer; /**< The hammer to beat bianzhong. */
 	ILightSceneNode *light;
+
+	struct play_state {
+		int remain; /**< Time remains for playing */
+		bool keyOn;
+		bool sideOn; /**< side on means the hammer should hit the side of bianzhong */
+	} playState[BZ_COUNT];
 
 	/**
 	 * Gets the specific x-coordinate of a bianzhong.
