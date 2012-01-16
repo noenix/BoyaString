@@ -26,6 +26,9 @@ public:
 
 	inline AbstractInstrument *getInstrument() const
 	{ return instrument; }
+
+	inline int getSceneId () const
+	{ return SCN_INSTRUMENT; }
 	
 	/**
 	 * The clean method inherited from the base class.

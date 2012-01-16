@@ -6,6 +6,7 @@
 #include <scene/MenuScene.h>
 
 #include <util/KinectDevice.h>
+#include <util/IGestureStrategy.h>
 
 AMenuController::AMenuController(MenuScene *scene):IEventReceiver() {
 	this->scene = scene;
@@ -53,6 +54,9 @@ bool KinectMenuController::OnEvent(const SEvent& event) {
 }
 
 void KinectMenuController::dominate() {
+	MenuGestureStrategy *s = new MenuGestureStrategy();
+	s->setInterval(200);
+	KinectDevice::getInstance()->changeStrategy(s);
 	KinectDevice::getInstance()->start();
 	this->scene->getDevice()->setEventReceiver(this);
 }

@@ -4,6 +4,9 @@
 
 #include <windows.h>
 
+class IGestureStrategy;
+class AbstractScene;
+
 /**
  * A kinect device handler ,
  * implemented in singleton design pattern.
@@ -20,6 +23,19 @@ public:
 	void close();
 
 	/**
+	 * Gets the currently calculated gesture.
+	 */
+	inline int getGesture() const
+	{ return gesture; }
+
+	/**
+	 * Changes the current gesture strategy.
+	 */
+	void changeStrategy(IGestureStrategy *s);
+
+	void setScene(AbstractScene *s);
+
+	/**
 	 * Creates a new thread and open the kinect device.
 	 * @retrun false if the device cannot open, otherwise true
 	 */
@@ -31,6 +47,10 @@ private:
 	static HANDLE threadHandler;
 	static DWORD threadRet; /**< Thread return values. */
 
+	static IGestureStrategy *strategy; /**< The gesture strategy used in the program. */
+	static int gesture;
+
+	static AbstractScene *scene;
 	static KinectDevice *instance;
 	KinectDevice(void);
 	virtual ~KinectDevice(void);

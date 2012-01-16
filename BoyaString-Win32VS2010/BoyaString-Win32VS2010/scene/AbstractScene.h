@@ -31,6 +31,12 @@ public:
 	 */
 	inline virtual IrrlichtDevice* getDevice() const 
 	{ return device; }
+	
+	/**
+	 * Gets the scene id according to the enum type.
+	 * @return the scene id.
+	 */
+	virtual int getSceneId() const = 0;
 
 	/**
 	 * display the scene, called by Bootstrap class.

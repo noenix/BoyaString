@@ -50,6 +50,9 @@ public:
 	 */
 	void switchTo(bool isNext) ;
 
+	inline int getSceneId () const
+	{ return SCN_MENU; }
+
 	/**
 	 * Enters to a particular menu.
 	 */
