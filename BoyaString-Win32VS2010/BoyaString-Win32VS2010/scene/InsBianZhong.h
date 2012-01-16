@@ -22,6 +22,8 @@ enum bianZhongType {
 	BZ_COUNT
 };
 
+class mymidi;
+
 class InsBianZhong :
 	public AbstractInstrument
 {
@@ -59,11 +61,17 @@ private:
 	IMeshSceneNode *hammer; /**< The hammer to beat bianzhong. */
 	ILightSceneNode *light;
 
+	mymidi *soundSrc; /**< The sound device engine. */
+
 	struct play_state {
 		int remain; /**< Time remains for playing */
 		bool keyOn;
 		bool sideOn; /**< side on means the hammer should hit the side of bianzhong */
 	} playState[BZ_COUNT];
+
+	const static struct bz_info {
+		int frontKey;
+	} bzInfos[BZ_COUNT];
 
 	/**
 	 * Gets the specific x-coordinate of a bianzhong.
@@ -71,6 +79,7 @@ private:
 	 * @return the x-corrdinate.
 	 */
 	float _getPositionX(int idx);
+
 };
 
 #endif

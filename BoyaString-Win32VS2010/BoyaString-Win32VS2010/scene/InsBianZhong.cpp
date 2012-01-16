@@ -1,5 +1,6 @@
 #include <scene/InsBianZhong.h>
 #include <scene/InstrumentScene.h>
+#include <music/mymidi.h>
 
 #include <iostream>
 #include <cmath>
@@ -7,9 +8,14 @@
 #define MAX_STRENGTH 20.0f
 #define BZ_PERIOD 12 /*< steps per period **/
 
+const InsBianZhong::bz_info InsBianZhong::bzInfos[BZ_COUNT] = {
+	{71}, {69}, {67}, {64}, {62}, {60}
+};
+
 InsBianZhong::InsBianZhong(InstrumentScene *s) :
 	AbstractInstrument(s)
 {
+	soundSrc = 0;
 	for (int i=0; i<BZ_COUNT; ++i) {
 		playState[i].keyOn = playState[i].sideOn = false;
 		playState[i].remain = 0;
@@ -20,6 +26,13 @@ void InsBianZhong::init() {
 	ISceneManager *smgr = scene->smgr;
 	IVideoDriver *driver = scene->driver;
 	u32 w = scene->sSize.Width, h = scene->sSize.Height;
+	if (soundSrc == 0) {
+		soundSrc = mymidi::getInstance();
+	}
+	if (!soundSrc->isOpen()) {
+		std::cerr << "Can not open MIDI device.\n";
+		//TODO throws an error here
+	}
 
 	IMesh *meshBZ = smgr->getMesh("res/instrument/zhong.obj");
 	float yDiff = 7.5f;
@@ -84,6 +97,8 @@ void InsBianZhong::play(void *note)
 	int realIdx = static_cast<int>(tempIdx);
 	if (!playState[realIdx].keyOn) {
 		/* according to the strength of hitting */
+		soundSrc->playNote(bzInfos[realIdx].frontKey);
+
 		playState[realIdx].remain = 10*BZ_PERIOD;
 		playState[realIdx].keyOn = true;
 	}
