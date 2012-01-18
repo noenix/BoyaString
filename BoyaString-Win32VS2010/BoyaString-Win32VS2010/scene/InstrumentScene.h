@@ -45,6 +45,13 @@ private:
 
 	AInstrumentController *controller;
 
+	ISceneNode *pauseButton;
+
+	/**
+	 * constances. 
+	 */
+	static const float pauseButtonSize;
+
 	/**
 	 * Intialize the scene.
 	 */

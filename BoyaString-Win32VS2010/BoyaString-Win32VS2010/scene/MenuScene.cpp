@@ -4,6 +4,11 @@
 #include <controller/IControllerFactory.h>
 #include <controller/AMenuController.h>
 
+#define MTITLE_WIDTH 128.0f
+#define MTITLE_HEIGHT 48.0f
+#define MTITLE_XDIFF 30.0f
+#define MTITLE_DEPTH 15.0f
+
 MenuScene::MenuScene() : AbstractScene() {
 	aniHandler.animationState = 0;
 	aniHandler.animationStep = 0;
@@ -67,10 +72,15 @@ void MenuScene::_animate() {
 		++aniHandler.animationStep;
 		for (int i=0, j=currentMenu; i<MIT_COUNT; ++i, ++j) {
 			float sign = ANI_SWITCH_TO_NEXT & aniHandler.animationState ? 1.0f : -1.0f;
-			float radius = (.5f - (sign*static_cast<float>(aniHandler.animationStep)/static_cast<float>(ANI_STEP)+i)
+			float currentStep = static_cast<float>(aniHandler.animationStep)/static_cast<float>(ANI_STEP);
+			float radius = (.5f - (sign*currentStep+i)
 				*2.0f/MIT_COUNT)*PI;;
 			menuItems[j % MIT_COUNT]->setPosition(vector3df(std::cos(radius)*menuRadius, 0,
 			(1.0f-std::sinf(radius))*menuRadius));
+			menuTitle[j % MIT_COUNT]->setPosition(vector3df(
+				-MTITLE_XDIFF*(i-sign*currentStep) +MTITLE_WIDTH - static_cast<float>(sSize.Width >> 1), 
+				MTITLE_HEIGHT  - static_cast<float>(sSize.Height >> 1), (i-sign*currentStep)*MTITLE_DEPTH)
+				);
 		}
 		if (aniHandler.animationStep >= ANI_STEP) {
 			aniHandler.animationStep = 0;
@@ -78,9 +88,17 @@ void MenuScene::_animate() {
 
 			/* change current menu value. */
 			if (ANI_SWITCH_TO_NEXT & aniHandler.animationState) {
+				menuTitle[currentMenu]->setPosition(vector3df(
+				-MTITLE_XDIFF*(MIT_COUNT-1) +MTITLE_WIDTH - static_cast<float>(sSize.Width >> 1), 
+				MTITLE_HEIGHT  - static_cast<float>(sSize.Height >> 1), (MIT_COUNT-1)*MTITLE_DEPTH)
+				);
 				++currentMenu;
 				currentMenu = currentMenu >= MIT_COUNT ? 0 : currentMenu;
 			} else {
+				menuTitle[(currentMenu + MIT_COUNT -1) % MIT_COUNT]->setPosition(vector3df(
+				-MTITLE_XDIFF*(0) +MTITLE_WIDTH - static_cast<float>(sSize.Width >> 1), 
+				MTITLE_HEIGHT  - static_cast<float>(sSize.Height >> 1), (0)*MTITLE_DEPTH)
+				);
 				--currentMenu;
 				currentMenu = currentMenu < 0 ? MIT_COUNT - 1 : currentMenu;
 			}
@@ -169,7 +187,17 @@ void MenuScene::_init() {
 		//cube->setMaterialTexture(0, driver->getTexture("res/pixel_yellow.png"));
 		//cube->setMaterialFlag(video::EMF_LIGHTING, false);
 
-		menuItems[i]->setMaterialType(video::EMT_LIGHTMAP);
+		//menuItems[i]->setMaterialType(video::EMT_LIGHTMAP);
+
+		/* also set menu title */
+		menuTitle[i] = smgr->addMeshSceneNode(smgr->addHillPlaneMesh("plane", dimension2df(MTITLE_WIDTH, MTITLE_HEIGHT),  dimension2du(1, 1)));
+		menuTitle[i]->setMaterialFlag(video::EMF_LIGHTING, false);
+		menuTitle[i]->setMaterialFlag(video::EMF_COLOR_MATERIAL, true);
+		
+		//menuTitle[i]->setMaterialTexture(0, driver->getTexture("res/pixel_white.png"));
+		menuTitle[i]->setPosition(vector3df(-MTITLE_XDIFF*i +MTITLE_WIDTH - static_cast<float>(sSize.Width >> 1), 
+			 MTITLE_HEIGHT  - static_cast<float>(sSize.Height >> 1), i*MTITLE_DEPTH));
+		menuTitle[i]->setRotation(vector3df(-90.0f,  0.0f, 0.f));
 
 	}
 }

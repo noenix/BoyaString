@@ -6,9 +6,12 @@
 #include <scene/InsBianZhong.h>
 #include <controller/IControllerFactory.h>
 
+const float InstrumentScene::pauseButtonSize = 60.0f;
+
 InstrumentScene::InstrumentScene():AbstractScene() {
 	instrument = 0;
 	controller = 0;
+	pauseButton = 0;
 }
 
 int InstrumentScene::display() {
@@ -41,6 +44,13 @@ void InstrumentScene::_init() {
 
 	instrument = new InsBianZhong(this);
 	instrument->init();
+
+	pauseButton = smgr->addCubeSceneNode(pauseButtonSize);
+	pauseButton->setMaterialTexture(0, driver->getTexture("res/pause_button.png"));
+	pauseButton->setMaterialFlag(video::EMF_LIGHTING, false);
+	pauseButton->setPosition(vector3df(-static_cast<float>((this->sSize.Width>>1) - pauseButtonSize),
+		-static_cast<float>((this->sSize.Height>>1) - pauseButtonSize), 0));
+	pauseButton->addAnimator(smgr->createRotationAnimator(vector3df(0, .5f, .0f)));
 
 	/* Intializes the camera */
 	camera = smgr->addCameraSceneNode(0, core::vector3df(0, 0,

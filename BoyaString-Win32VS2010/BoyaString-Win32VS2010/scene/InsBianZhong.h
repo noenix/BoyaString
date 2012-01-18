@@ -71,6 +71,7 @@ private:
 
 	const static struct bz_info {
 		int frontKey;
+		float width, height;
 	} bzInfos[BZ_COUNT];
 
 	/**

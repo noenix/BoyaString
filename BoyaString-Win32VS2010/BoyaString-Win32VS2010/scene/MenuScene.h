@@ -61,7 +61,9 @@ public:
 	void clean();
 
 private:
-	ISceneNode *menuItems[MIT_COUNT];
+	ISceneNode *menuItems[MIT_COUNT]; /* scene node for menu items */
+	ISceneNode *menuTitle[MIT_COUNT]; /* scene node for menu title */
+
 	ISceneNode *backWall, *upWall, *downWall, *leftWall, *rightWall;
 	ICameraSceneNode *camera;
 	ILightSceneNode *gLight, *upLight, *downLight;

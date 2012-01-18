@@ -36,7 +36,7 @@ IrrlichtSystem::IrrlichtSystem() {
 	this->showLoadingImg(false);
 
 		
-#ifdef USE_KINECT
+#ifndef USE_KINECT
 		cf = new KinectControllerFactory();
 #else 
 		cf = new MouseControllerFactory();
