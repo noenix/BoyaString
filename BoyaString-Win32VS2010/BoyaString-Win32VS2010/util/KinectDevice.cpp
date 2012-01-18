@@ -66,15 +66,16 @@ DWORD WINAPI KinectDevice::_startKinect(LPVOID param)
 						case SCN_MENU:
 
 							switch (gesture) {
+							case LEFT_HAND_R_TO_L_AND_RIGHT_HAND_L_TO_R_AND_OPEN_DOOR:
+								dynamic_cast<MenuScene*>(scene)->enter();
+								break;
 							case RIGHT_HAND_L_TO_R:
 								dynamic_cast<MenuScene*>(scene)->switchTo(true);
 								break;
 							case RIGHT_HAND_R_TO_L:
 								dynamic_cast<MenuScene*>(scene)->switchTo(false);
 								break;
-							case LEFT_HAND_R_TO_L_AND_RIGHT_HAND_L_TO_R_AND_OPEN_DOOR:
-								dynamic_cast<MenuScene*>(scene)->enter();
-								break;
+						
 							default:
 								break;
 							}

@@ -57,6 +57,8 @@ void KinectMenuController::dominate() {
 	MenuGestureStrategy *s = new MenuGestureStrategy();
 	s->setInterval(200);
 	KinectDevice::getInstance()->changeStrategy(s);
+	KinectDevice::getInstance()->setScene(scene);
 	KinectDevice::getInstance()->start();
+
 	this->scene->getDevice()->setEventReceiver(this);
 }
