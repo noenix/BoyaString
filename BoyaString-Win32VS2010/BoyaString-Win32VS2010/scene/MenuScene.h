@@ -66,7 +66,8 @@ private:
 
 	ISceneNode *backWall, *upWall, *downWall, *leftWall, *rightWall;
 	ICameraSceneNode *camera;
-	ILightSceneNode *gLight, *upLight, *downLight;
+	ILightSceneNode *mtLight; /**< menu title scene node */
+	ILightSceneNode *upLight, *downLight;
 	float menuRadius;
 
 	int currentMenu; /**< Currently selective menu. */

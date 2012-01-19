@@ -4,10 +4,10 @@
 #include <controller/IControllerFactory.h>
 #include <controller/AMenuController.h>
 
-#define MTITLE_WIDTH 128.0f
-#define MTITLE_HEIGHT 48.0f
-#define MTITLE_XDIFF 30.0f
-#define MTITLE_DEPTH 15.0f
+#define MTITLE_WIDTH 256.0f
+#define MTITLE_HEIGHT 96.0f
+#define MTITLE_XDIFF 540.0f
+#define MTITLE_DEPTH 125.0f
 
 MenuScene::MenuScene() : AbstractScene() {
 	aniHandler.animationState = 0;
@@ -126,10 +126,7 @@ void MenuScene::_init() {
 		-static_cast<float>(this->sSize.Height >> 1)*1.33333333f ));
 	camera->setAspectRatio(static_cast<float>(16.0/9.0));
 
-	//smgr->setAmbientLight(SColor(1.0, 1.0, 0.0, 0.0));
-	gLight = smgr->addLightSceneNode(0, vector3df(-static_cast<float>(w >> 1), static_cast<float>(h >> 1), -100.0));
-	gLight->setRadius(1200.0);
-	gLight->setVisible(false);
+	//smgr->setAmbientLight(SColor(1.0, 1.0, 0.0, 0.0))
 
 	upLight = smgr->addLightSceneNode(0, vector3df(0, 50, -30.0));
 	upLight->setRadius(1500.0);
@@ -137,43 +134,26 @@ void MenuScene::_init() {
 	downLight = smgr->addLightSceneNode(0, vector3df(0, -50, -30.0));
 	downLight->setRadius(1500.0);
 
-	//TODO the detailed design of the scene should be done later
-/*
-	ITexture *gray = driver->getTexture("res/pixel_grey.png");
-	ISceneNode *backWall =
-	smgr->addMeshSceneNode(
-		smgr->addHillPlaneMesh("plane", dimension2d<f32>(960 ,540), dimension2d<u32>(1,1)));
-	backWall->setMaterialTexture(0, gray);
-	backWall->setPosition(vector3df(0, -0, 2.2*menuRadius));
-	backWall->setRotation(vector3df(-90.0, 0.0, 0.0));
-	//plane->setMaterialFlag(video::EMF_LIGHTING, false
 
-	ISceneNode *upWall =
-	smgr->addMeshSceneNode(
-		smgr->addHillPlaneMesh("plane1", dimension2d<f32>(960 ,2.2*menuRadius), dimension2d<u32>(1,1)));
-	upWall->setMaterialTexture(0,gray);
-	upWall->setPosition(vector3df(0, 270, 1.1*menuRadius));
-	upWall->setRotation(vector3df(180.0, 00.0, 0.0));
-
-	ISceneNode *downWall =
-	smgr->addMeshSceneNode(
-		smgr->addHillPlaneMesh("plane2", dimension2d<f32>(960 ,2.2*menuRadius), dimension2d<u32>(1,1)));
-	downWall->setMaterialTexture(0, gray);
-	downWall->setPosition(vector3df(0, -270, 1.1*menuRadius));
-	
-*/
 	IMesh *jzMesh = smgr->getMesh("res/juanzhou/juanzhou.obj");
+	IMesh *paperMesh = smgr->addHillPlaneMesh("paper", 
+			dimension2df(1.0f, 8.0f),  dimension2du(1, 1));
 	for (int i=0; i<MIT_COUNT; ++i) {
 		//TODO 
 		//menuItems[i] = smgr->addCubeSceneNode(75);
 		menuItems[i] = smgr->addEmptySceneNode();
 
 		//ISceneNode *cube = smgr->addCubeSceneNode(75/20.0,menuItems[i]);
-		ISceneNode *leftJz, *rightJz;
+		ISceneNode *leftJz, *rightJz, *paper;
 		leftJz = smgr->addMeshSceneNode(jzMesh, menuItems[i]);
 		leftJz->setPosition(vector3df(-.8, 00, 0));
 		rightJz = smgr->addMeshSceneNode(jzMesh, menuItems[i]);
 		rightJz->setPosition(vector3df(.8, 00, 0));
+		paper = smgr->addMeshSceneNode(paperMesh, menuItems[i]);
+		//paper->setMaterialFlag(video::EMF_LIGHTING, false);
+		paper->setRotation(vector3df(-180, 0, 0));
+		paper->setMaterialTexture(0, driver->getTexture("res/pixel_white.png"));
+
 		menuItems[i]->setRotation(vector3df(90.0, 0.0, 0.0));
 		menuItems[i]->setScale(vector3df(20.0, 20.0, 20.0));
 
@@ -191,9 +171,15 @@ void MenuScene::_init() {
 
 		/* also set menu title */
 		menuTitle[i] = smgr->addMeshSceneNode(smgr->addHillPlaneMesh("plane", dimension2df(MTITLE_WIDTH, MTITLE_HEIGHT),  dimension2du(1, 1)));
-		menuTitle[i]->setMaterialFlag(video::EMF_LIGHTING, false);
-		menuTitle[i]->setMaterialFlag(video::EMF_COLOR_MATERIAL, true);
+	//	menuTitle[i]->setMaterialFlag(video::EMF_LIGHTING, false);
+		menuTitle[i]->setMaterialType(video::EMT_TRANSPARENT_ALPHA_CHANNEL);
 		
+		std::string menuTitleFileName("res/menuTitle");
+		menuTitleFileName.push_back('1' + i); //CAUTION! menu items will never exceeds NINE
+		menuTitleFileName += ".png";
+
+		menuTitle[i]->setMaterialTexture(0, driver->getTexture(menuTitleFileName.c_str()));
+		//menuTitle[i]->getMaterial(0).AmbientColor = SColor(100, 255, 255, 255);
 		//menuTitle[i]->setMaterialTexture(0, driver->getTexture("res/pixel_white.png"));
 		menuTitle[i]->setPosition(vector3df(-MTITLE_XDIFF*i +MTITLE_WIDTH - static_cast<float>(sSize.Width >> 1), 
 			 MTITLE_HEIGHT  - static_cast<float>(sSize.Height >> 1), i*MTITLE_DEPTH));
