@@ -40,7 +40,7 @@ void InstrumentScene::_init() {
 		controller = IrrlichtSystem::getInstance()
 			->getControllerFactory()->getInstrumentController(this);
 	}
-	controller->dominate();
+	
 
 	instrument = new InsBianZhong(this);
 	instrument->init();
@@ -64,4 +64,5 @@ void InstrumentScene::_init() {
 	cube->setMaterialTexture(0, driver->getTexture("res/pixel_yellow.png"));
 	cube->setMaterialFlag(video::EMF_LIGHTING, false);
 	*/
+	controller->dominate();
 }

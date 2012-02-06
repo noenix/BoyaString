@@ -44,6 +44,8 @@ public:
 	 * @return false why 'false' is returned.
 	 */
 	virtual bool OnEvent(const SEvent& event);
+
+	void dominate();
 };
 
 class MouseInstrumentController : public AInstrumentController

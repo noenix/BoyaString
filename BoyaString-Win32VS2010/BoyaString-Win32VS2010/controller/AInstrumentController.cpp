@@ -5,6 +5,9 @@
 #include <scene/InstrumentScene.h>
 #include <scene/InsBianZhong.h>
 
+#include <util/KinectDevice.h>
+#include <util/IGestureStrategy.h>
+
 #include <iostream>
 
 AInstrumentController::AInstrumentController(InstrumentScene *scene)
@@ -24,6 +27,16 @@ AInstrumentController::~AInstrumentController(void)
 KinectInstrumentController::KinectInstrumentController(InstrumentScene *scene)
 	:AInstrumentController(scene)
 {
+}
+
+void KinectInstrumentController::dominate() {
+	InstrumentGestureStrategy *s = new InstrumentGestureStrategy();
+	s->setInterval(200);
+	KinectDevice::getInstance()->changeStrategy(s);
+	KinectDevice::getInstance()->setScene(scene);
+	KinectDevice::getInstance()->start();
+
+	this->scene->getDevice()->setEventReceiver(this);
 }
 
 bool KinectInstrumentController::OnEvent(const SEvent& event)

@@ -12,6 +12,10 @@ using namespace std;
 #define SwipeMinimalLength 0.2
 #define SwipeMininalDuration 250 
 #define SwipeMaximalDuration 1500
+#define KnockMaximalPlaneDelta 0.1
+#define KnockMinimalLength 0.2
+#define KnockMininalDuration 250 
+#define KnockMaximalDuration 1500
 #define OpenDoorDelta 150
 
 enum gestureType
@@ -24,6 +28,9 @@ enum gestureType
 	RIGHT_HAND_R_TO_L,
 	RIGHT_HAND_L_TO_R_AND_OPEN_DOOR,
 	LEFT_HAND_R_TO_L_AND_RIGHT_HAND_L_TO_R_AND_OPEN_DOOR,
+	KNOCK_LEFT,//knock with the left hand 
+	KNOCK_RIGHT,//knock with the right hand 
+	KNOCK_LEFT_RIGHT,//knock with the left and right hand at the same time 
 	TYPE_NUMBER
 };
 
@@ -61,6 +68,20 @@ public:
 	int setPosition(const Vector4 position[]);
 	bool isGesture(std::list<Vector4>& l,bool leftHand,bool updateLastTime);
 	~MenuGestureStrategy(void){};
+};
+
+class InstrumentGestureStrategy: public IGestureStrategy
+{
+private:
+	int intervalTime;
+	std::list<Vector4> l;
+	std::list<Vector4> r;
+public:
+	InstrumentGestureStrategy(void){};
+	void setInterval(int time){intervalTime=time;};
+	int setPosition(const Vector4 position[]);
+	bool isGesture(std::list<Vector4>& positionList);
+	~InstrumentGestureStrategy(void){};
 };
 
 #endif

@@ -60,3 +60,43 @@ bool MenuGestureStrategy::isGesture(list<Vector4>& l,bool leftHand,bool updateLa
 	else
 		return false;
 }
+
+int InstrumentGestureStrategy::setPosition(const Vector4 position[])
+{
+	/*if(!l.empty())
+		if(position[NUI_SKELETON_POSITION_HAND_LEFT].y-l.back().y>0||
+			position[NUI_SKELETON_POSITION_HAND_LEFT].z-l.back().z>0||
+			abs(position[NUI_SKELETON_POSITION_HAND_LEFT].x-l.back().x)>KnockMaximalPlaneDelta)
+			l.clear();
+	if(!r.empty())
+		if(position[NUI_SKELETON_POSITION_HAND_RIGHT].y-r.back().y>0||
+			position[NUI_SKELETON_POSITION_HAND_RIGHT].z-r.back().z>0||
+			abs(position[NUI_SKELETON_POSITION_HAND_RIGHT].x-r.back().x)>KnockMaximalPlaneDelta)
+			r.clear();
+	l.push_back(position[NUI_SKELETON_POSITION_HAND_LEFT]);
+	r.push_back(position[NUI_SKELETON_POSITION_HAND_RIGHT]);
+	gestureType returnValue=NONE;
+	if(isGesture(l))
+		returnValue=KNOCK_LEFT;
+	if(isGesture(r))
+		if(returnValue==KNOCK_LEFT)
+			return KNOCK_LEFT_RIGHT;
+		else
+			return KNOCK_RIGHT;
+	else
+		return returnValue;*/
+	return 1;
+}
+
+bool InstrumentGestureStrategy::isGesture(list<Vector4>& positionList)
+{
+	int time=(positionList.size()-1)*intervalTime;
+	FLOAT length=abs(positionList.back().y-positionList.front().y);
+	if((time>KnockMininalDuration)&&(time<KnockMaximalDuration)&&(length>KnockMinimalLength))	
+	{
+		//positionList.clear();
+		return true;
+	}
+	else
+		return false;
+}

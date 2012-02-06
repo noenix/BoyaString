@@ -50,6 +50,13 @@ public:
 	 */
 	virtual void clean() = 0;
 
+	/**
+	 * Gets the screen size.
+	 * @return the screen size.
+	 */
+	inline core::dimension2du getSize() const 
+	{ return sSize; }
+
 protected:
 	IrrlichtDevice *device;
 	ISceneManager *smgr;
